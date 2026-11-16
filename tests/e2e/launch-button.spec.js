@@ -10,6 +10,7 @@ test('实体发射键途中锁住下陷，完成后自动弹起并可再次发�
   const button=page.getByRole('button',{name:'Launch',exact:true});
   await button.scrollIntoViewIfNeeded();
   const face=button.locator('.launch-face');
+  const restingColor=await face.evaluate(el=>getComputedStyle(el).color);
   await expect(button).toHaveText('LAUNCH');
   await expect(button).toHaveAttribute('aria-pressed','false');
   const offset=async()=>{
@@ -22,14 +23,18 @@ test('实体发射键途中锁住下陷，完成后自动弹起并可再次发�
   const box=await button.boundingBox();
   await page.mouse.move(box.x+box.width/2,box.y+box.height/2);
   await page.mouse.down();
+  await expect(face).toHaveCSS('color','rgb(232, 173, 113)');
   await expect.poll(offset).toBeGreaterThan(raised+3);
   await page.mouse.up();
   await expect(button).toHaveAttribute('aria-pressed','true');
   await expect(button).toBeDisabled();
   await expect.poll(offset).toBeGreaterThan(raised+3);
   await page.evaluate(()=>window.__PAGODAX__.pause());
+  await expect(face).toHaveCSS('color','rgb(232, 173, 113)');
+  expect(await face.evaluate(el=>getComputedStyle(el).textShadow)).toContain('5px');
   await expect(button).toBeEnabled();
   await button.screenshot({path:testInfo.outputPath('launch-latched.png')});
+  await button.screenshot({path:'test-results/launch-orange.png'});
   await expect.poll(offset).toBeGreaterThan(raised+3);
   await page.locator('#language').click();
   await expect(button).toHaveText('LAUNCH');
@@ -41,6 +46,7 @@ test('实体发射键途中锁住下陷，完成后自动弹起并可再次发�
   await expect(button).toBeEnabled();
   await expect(button).toHaveText('LAUNCH');
   await expect(button).toHaveAttribute('aria-pressed','false');
+  await expect(face).toHaveCSS('color',restingColor);
   await expect.poll(offset).toBeCloseTo(raised,1);
   // The completed mission releases the key; replay presses and latches it again.
   await button.click();

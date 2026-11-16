@@ -91,6 +91,7 @@ function update(frame) {
   text('phase-label', launched ? t('phase.' + frame.phase) : t('phase.STANDBY'));
   text('scene-caption', launched ? t('caption.' + frame.phase) : t('scene.standby'));
   updateTime(frame);
+  updateInstrumentRotation(frame);
   updateProfile(frame);
   text('altitude', Math.round(frame.altitude).toString().padStart(3, '0'));
   text('velocity', frame.speed.toFixed(1));
@@ -153,17 +154,22 @@ function updateProfile(frame) {
 
 const instrumentTabs=[...document.querySelectorAll('.instrument-tabs [role=tab]')];
 const instrumentPanels=[...document.querySelectorAll('.instrument-panel')];
-let activeInstrument=0;
+let lastInstrumentStep=-1;
 function selectInstrument(index) {
-  activeInstrument=index;
   document.querySelector('.instrument-track').style.transform='translate3d('+(-index*100)+'%,0,0)';
   instrumentTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;});
   instrumentPanels.forEach((panel,i)=>{panel.setAttribute('aria-hidden',String(i!==index));panel.inert=i!==index;});
 }
+function updateInstrumentRotation(frame) {
+  const step=frame.time<LIFTOFF_TIME?-1:Math.floor((frame.time-LIFTOFF_TIME)/3);
+  if(step===lastInstrumentStep) return;
+  lastInstrumentStep=step;
+  selectInstrument(frame.complete?instrumentTabs.length-1:step<0?0:step%instrumentTabs.length);
+}
 instrumentTabs.forEach((tab,index)=>{
   tab.addEventListener('click',()=>selectInstrument(index));
   tab.addEventListener('keydown',event=>{
-    const next=event.key==='ArrowRight'?(activeInstrument+1)%4:event.key==='ArrowLeft'?(activeInstrument+3)%4:event.key==='Home'?0:event.key==='End'?3:undefined;
+    const next=event.key==='ArrowRight'?(index+1)%4:event.key==='ArrowLeft'?(index+3)%4:event.key==='Home'?0:event.key==='End'?3:undefined;
     if (next===undefined) return;
     event.preventDefault();selectInstrument(next);instrumentTabs[next].focus();
   });

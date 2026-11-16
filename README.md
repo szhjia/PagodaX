@@ -13,9 +13,9 @@ A cinematic, interactive launch experience set in Xi’an. Real photography of t
 ## The experience
 
 - **Two linked cameras.** A fixed ground view and a 30-second ascent tracker share one scene and mission clock.
-- **A tactile launch key.** LAUNCH stays pressed during the sequence and releases when the flight ends. Scrub the timeline or jump between mission phases.
+- **A tactile launch key.** LAUNCH stays pressed with a subtle amber text glow during the sequence and releases when the flight ends. Scrub the timeline or jump between mission phases.
 - **Camera control.** Follow the automatic framing, or take over with 1–5× zoom and bounded drag-to-pan. Arrow keys pan the enlarged view.
-- **Live instruments.** Switch between flight profile, propellant remaining, engine status, and a moving orbital forecast with a sliding transition.
+- **Live instruments.** Switch between flight profile, propellant remaining, engine status, and a moving orbital forecast with a sliding transition. From liftoff, panels advance every three mission seconds and finish on the forecast. Manual selection remains available; pausing also pauses rotation.
 - **Changing skies.** Haze gives way to clear air; the weather archive compares registered photographs with a draggable divider.
 - **English and Simplified Chinese.** Switch in the header without restarting the flight. Language and mute preferences stay on your device.
 - **A measured loading screen.** The opening screen follows four completed image loads and the first rendered scene. It stays visible for at least 1.5 seconds, then fades into the console over 600 ms once everything is ready. Reduced-motion preferences skip the fade.
