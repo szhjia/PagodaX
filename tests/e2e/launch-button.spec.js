@@ -12,6 +12,7 @@ test('实体发射键途中锁住下陷，完成后自动弹起并可再次发�
   const face=button.locator('.launch-face');
   const restingColor=await face.evaluate(el=>getComputedStyle(el).color);
   await expect(button).toHaveText('LAUNCH');
+  await expect(page.locator('.elapsed')).toHaveText('00:00');
   await expect(button).toHaveAttribute('aria-pressed','false');
   const offset=async()=>{
     const faceBox=await face.boundingBox(), buttonBox=await button.boundingBox();
@@ -47,6 +48,7 @@ test('实体发射键途中锁住下陷，完成后自动弹起并可再次发�
   await expect(button).toHaveText('LAUNCH');
   await expect(button).toHaveAttribute('aria-pressed','false');
   await expect(face).toHaveCSS('color',restingColor);
+  await expect(page.locator('.elapsed')).toHaveText('00:48');
   await expect.poll(offset).toBeCloseTo(raised,1);
   // The completed mission releases the key; replay presses and latches it again.
   await button.click();

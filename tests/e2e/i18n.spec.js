@@ -60,7 +60,7 @@ test('运行中切换语言保持时间、播放、声音及资源状态，结�
   await expect(page.locator('#phase-label')).toHaveText('穿越云层');
   await expect(page.locator('#tracking-status')).toHaveText('升空跟踪中');
   await expect(page.locator('#sound')).toHaveAccessibleName('关闭声音');
-  await expect(page.locator('#progress')).toHaveAttribute('aria-valuetext','穿越云层，27.0 秒，共 48 秒');
+  await expect(page.locator('#progress')).toHaveAttribute('aria-valuetext','穿越云层，已进行 27.0 秒');
   await page.locator('#play').click();
   await page.locator('#language').click();
   expect((await page.evaluate(()=>window.__PAGODAX__.state())).playing).toBe(true);

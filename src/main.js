@@ -99,7 +99,7 @@ function update(frame) {
   text('elapsed', `${String(Math.floor(elapsed / 60)).padStart(2, '0')}:${String(elapsed % 60).padStart(2, '0')}`);
   progress.value = frame.time;
   progress.style.setProperty('--progress', `${frame.time / DURATION * 100}%`);
-  progress.setAttribute('aria-valuetext', t('timeline.value', { phase: t('phase.' + frame.phase), time: frame.time.toFixed(1), duration: DURATION }));
+  progress.setAttribute('aria-valuetext', t('timeline.value', { phase: t('phase.' + frame.phase), time: frame.time.toFixed(1) }));
   text('camera-mode', t('scene.cameraMode'));
   text('tracking-status', t(frame.time < LIFTOFF_TIME ? 'tracking.pad' : frame.time < TRACKING_END ? 'tracking.ascent' : 'tracking.complete'));
   text('tracking-time', t('tracking.time', {seconds: frame.flightSeconds.toFixed(1).padStart(4, '0')}));
