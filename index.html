@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101112" />
+    <meta name="description" data-i18n-content="page.description" content="PagodaX: a pagoda launch mission grounded in real photography." />
+    <title data-i18n="page.title">PagodaX</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/assets/xian-clear.webp" />
+  </head>
+  <body data-loading="true">
+    <div class="preloader" id="preloader" role="status" aria-live="polite">
+      <div class="preloader-content">
+        <span class="preloader-code">PX–01</span>
+        <div class="preloader-brand" aria-label="PagodaX">Pagoda<span>X</span><i></i></div>
+        <p data-i18n="loading.caption">PREPARING LAUNCH SITE</p>
+        <div class="preloader-track" id="loading-progress" role="progressbar" aria-label="Preparing launch site" data-i18n-aria-label="loading.label" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><i></i></div>
+        <div class="preloader-detail"><span id="loading-step" data-i18n="loading.images">Loading imagery</span><span id="loading-count">00 / 05</span></div>
+      </div>
+    </div>
+    <header class="site-header">
+      <a href="#" class="wordmark" aria-label="PagodaX home" data-i18n-aria-label="nav.home">Pagoda<span class="brand-x">X</span><i></i></a>
+      <div class="program-name"><span class="tiny-cross" aria-hidden="true">+</span><span data-i18n="mission.eyebrow">EXPERIMENTAL FLIGHT / MISSION PX–01</span></div>
+      <nav class="header-actions" aria-label="Page controls" data-i18n-aria-label="nav.controls">
+        <button id="language" class="language-button" type="button" aria-label="Switch to Chinese" title="Switch to Chinese" data-i18n-aria-label="nav.switchLanguage" data-i18n-title="nav.switchLanguage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1m14 20-5-11-5 11m2-4h6"/></svg><span data-i18n="nav.currentLanguage">English</span></button>
+        <button class="archive-link" id="open-atmosphere"><span data-i18n="nav.archive">Weather archive</span><svg class="archive-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></button>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="sr-only" id="mission-title" data-i18n="scene.label">PagodaX launch mission</h1>
+      <section class="flight-window" aria-label="PagodaX launch mission" data-i18n-aria-label="scene.label">
+        <div class="flight-visuals" id="flight-visuals">
+        <div class="stage" id="stage" data-ready="false" data-can-pan="false" tabindex="0" aria-label="Main camera" data-i18n-aria-label="camera.interaction">
+          <img draggable="false" class="fallback-photo" src="/assets/xian-haze.webp" alt="Hazy view of the Giant Wild Goose Pagoda plaza" data-i18n-alt="scene.photo" />
+          <div class="image-shade"></div>
+          <div class="camera-top"><span><i class="status-dot"></i> <span class="camera-id" lang="en">CAM 01</span> <b id="camera-mode" data-i18n="scene.cameraMode">Earth · Xi’an · Giant Wild Goose Pagoda Launch Site</b></span><div class="atmosphere-meter"><span data-i18n="weather.conditions">WEATHER</span><strong id="visibility-label" data-i18n="weather.hazy">HAZY</strong><div><i id="visibility-bar"></i></div></div></div>
+          <div class="frame-corner corner-tl"></div><div class="frame-corner corner-tr"></div>
+          <div class="frame-corner corner-bl"></div><div class="frame-corner corner-br"></div>
+
+
+          <div class="camera-crosshair" aria-hidden="true"></div>
+          <div class="target-marker" id="target-marker" aria-hidden="true"><i></i><span>PX–01<br /><span data-i18n="scene.signal">SIGNAL ACQUIRED</span></span></div>
+          <div class="stage-message" id="stage-message" role="status"><span class="loading-orbit"></span><p data-i18n="scene.loading">Preparing flight</p></div>
+          <div class="end-card" id="end-card"><div class="end-wordmark">Pagoda<span>X</span></div><span class="end-tagline" data-i18n="scene.tagline">From Chang’an to the sky</span></div>
+
+          <div class="flight-bottom"><p id="scene-caption" data-i18n="scene.standby">An ancient tower. A new journey.</p><div class="flight-clock"><div class="clock-heading"><span class="clock-label" id="clock-label" data-i18n="scene.beijing">BEIJING TIME</span><time id="mission-date">----.--.--</time></div><time class="flight-time" id="mission-time">--:--:--</time></div></div>
+        </div>
+        <aside class="tracking-panel" id="tracking-panel" data-visible="false" aria-hidden="true" inert aria-label="Ascent tracking camera: the pagoda rocket" data-i18n-aria-label="tracking.label">
+          <header class="tracking-header"><span class="eyebrow" data-i18n="tracking.camera">CAM 02 / VEHICLE TRACKER</span><strong data-i18n="tracking.heading">ASCENT</strong><p><i class="status-dot"></i><span id="tracking-status" data-i18n="tracking.pad">PAD VIEW</span></p></header>
+          <div class="tracking-view" id="tracking-view"><div class="tracking-reticle"><i></i><i></i><i></i><i></i></div><div class="tracking-guide"></div><span class="tracking-lock" data-i18n="tracking.lock">PX–01 / OPTICAL LOCK</span><span class="tracking-time" id="tracking-time">FLIGHT +00.0s</span></div>
+          <div class="tracking-bottom"><div><span data-i18n="tracking.window">TRACKING WINDOW</span><strong><b id="tracking-seconds">00.0</b><small data-i18n="unit.tracking"> / 30 s</small></strong></div><svg viewBox="0 0 100 45" aria-hidden="true"><path class="trajectory-base" d="M1 43h98M10 44V2"/><path class="trajectory-path" d="M10 40C45 40 58 30 85 4"/><circle id="trajectory-dot" cx="10" cy="40" r="2.5"/></svg></div>
+        </aside>
+        </div>
+
+        <div class="telemetry">
+          <div class="mission-status"><span class="metric-label" data-i18n="telemetry.status">FLIGHT STATUS</span><strong><i class="status-dot"></i><span id="phase-label" data-i18n="phase.STANDBY">Awaiting launch</span></strong></div>
+          <div class="metric"><span class="metric-label" data-i18n="telemetry.altitude">ALTITUDE</span><strong><span id="altitude">000</span><small data-i18n="unit.m">m</small></strong></div>
+          <div class="metric"><span class="metric-label" data-i18n="telemetry.speed">VELOCITY</span><strong><span id="velocity">0.0</span><small data-i18n="unit.speed">m/s</small></strong></div>
+          <div class="flight-profile" id="flight-instrument">
+            <div class="instrument-tabs" role="tablist" aria-label="Flight instruments" data-i18n-aria-label="instrument.label">
+              <button type="button" id="instrument-tab-profile" role="tab" aria-selected="true" aria-controls="instrument-panel-profile" data-panel="0" data-i18n="instrument.profile">PROFILE</button>
+              <button type="button" id="instrument-tab-propellant" role="tab" aria-selected="false" aria-controls="instrument-panel-propellant" tabindex="-1" data-panel="1" data-i18n="instrument.propellant">PROPELLANT</button>
+              <button type="button" id="instrument-tab-engines" role="tab" aria-selected="false" aria-controls="instrument-panel-engines" tabindex="-1" data-panel="2" data-i18n="instrument.engines">ENGINES</button>
+              <button type="button" id="instrument-tab-forecast" role="tab" aria-selected="false" aria-controls="instrument-panel-forecast" tabindex="-1" data-panel="3" data-i18n="instrument.forecast">FORECAST</button>
+            </div>
+            <div class="instrument-window"><div class="instrument-track">
+              <div class="instrument-panel" id="instrument-panel-profile" role="tabpanel" aria-labelledby="instrument-tab-profile" aria-hidden="false">
+                <svg viewBox="0 0 260 36" preserveAspectRatio="none" role="img" aria-label="Altitude over mission time" data-i18n-aria-label="profile.chart"><path class="profile-grid" d="M1 5h258M1 19h258M1 33h258M65 2v32M130 2v32M195 2v32"/><polyline id="profile-line" points="1,33"/><circle id="profile-dot" cx="1" cy="33" r="2"/></svg>
+              </div>
+              <div class="instrument-panel" id="instrument-panel-propellant" role="tabpanel" aria-labelledby="instrument-tab-propellant" aria-hidden="true" inert>
+                <div class="instrument-readings"><div><span data-i18n="instrument.remaining">REMAINING</span><strong id="propellant-remaining">100.0%</strong></div><div><span data-i18n="instrument.consumed">CONSUMED</span><strong class="secondary-reading" id="propellant-used">0.0%</strong></div></div>
+                <div class="propellant-gauge" role="progressbar" aria-label="Propellant remaining" data-i18n-aria-label="instrument.remainingLabel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i id="propellant-fill"></i></div>
+              </div>
+              <div class="instrument-panel" id="instrument-panel-engines" role="tabpanel" aria-labelledby="instrument-tab-engines" aria-hidden="true" inert>
+                <div class="engine-heading"><span id="engine-state">STANDBY</span><div class="engine-caption"><span data-i18n="instrument.active">ACTIVE ENGINES</span><b id="engine-count">00 / 09</b></div><strong id="engine-output">000%</strong></div>
+                <div id="engine-array" class="engine-array" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="instrument-panel" id="instrument-panel-forecast" role="tabpanel" aria-labelledby="instrument-tab-forecast" aria-hidden="true" inert>
+                <div class="forecast-layout">
+                  <svg class="orbit-chart" viewBox="0 0 120 32" role="img" aria-label="Target orbit in perspective" data-i18n-aria-label="forecast.chart">
+                    <defs><radialGradient id="earth-light" cx="32%" cy="25%" r="80%"><stop offset="0" stop-color="#435a62"/><stop offset="1" stop-color="#131d24"/></radialGradient></defs>
+                    <path class="orbit-axis" d="M7 16h106M60 1v30"/>
+                    <path id="orbit-far" class="orbit-far"/>
+                    <circle class="orbit-earth" cx="60" cy="16" r="9"/>
+                    <ellipse class="earth-grid" cx="60" cy="16" rx="9" ry="3"/><ellipse class="earth-grid" cx="60" cy="16" rx="3.5" ry="9"/>
+                    <path id="orbit-near" class="orbit-near"/>
+                    <path id="orbit-transfer" class="orbit-transfer"/>
+                    <circle id="orbit-insertion" class="orbit-insertion" r="1.8"/>
+                    <path id="orbit-direction" class="orbit-direction"/>
+                    <path id="orbit-flown" class="orbit-flown" d="M60,7"/>
+                    <circle class="orbit-pad" cx="60" cy="7" r="1.2"/>
+                    <circle id="orbit-halo" class="orbit-halo" cx="60" cy="7" r="3.5"/>
+                    <circle id="orbit-craft" class="orbit-craft" cx="60" cy="7" r="2"/>
+                    <text id="orbit-current-height" class="orbit-current-height" x="115" y="30" text-anchor="end">↑ 0.00 km</text>
+                  </svg>
+                  <div class="forecast-countdown"><span data-i18n="forecast.insertion">INSERTION IN</span><strong id="insertion-countdown">09:00</strong></div>
+                  <div class="forecast-target"><span data-i18n="forecast.target">TARGET ORBIT</span><strong id="orbit-altitudes">320 × 340 <small data-i18n="unit.km">km</small></strong><span id="orbit-elements">53° · 91.0 min</span></div>
+                </div>
+              </div>
+            </div></div>
+          </div>
+          <div class="vehicle-mark"><img src="/assets/pagoda-vehicle-mark.webp" width="44" height="66" alt="" draggable="false" decoding="async" /><span><span data-i18n="telemetry.vehicle">PAGODA–01</span><br /><small data-i18n="telemetry.history">7 STAGES OF HISTORY</small></span></div>
+        </div>
+
+        <div class="playback">
+          <div class="timeline-track"><input id="progress" type="range" min="0" max="48" step="0.01" value="0" aria-label="Mission progress" data-i18n-aria-label="timeline.label" disabled /><div class="phase-ticks" id="phase-ticks"><button data-time="0" data-i18n="tick.countdown">Countdown</button><button data-time="6" data-i18n="tick.ignition">Ignition</button><button data-time="12" data-i18n="tick.liftoff">Liftoff</button><button data-time="24" data-i18n="tick.cloud">Cloud break</button><button data-time="32" data-i18n="tick.ascent">Ascent</button><button data-time="42" data-i18n="tick.beyond">Beyond</button></div></div>
+          <div class="controls-row">
+            <div class="transport"><button class="play-button" id="play" type="button" lang="en" disabled aria-label="Launch" aria-pressed="false" aria-busy="false" data-latched="false"><span class="launch-face">LAUNCH</span></button><span class="elapsed"><span id="elapsed">00:00</span> <i>/</i> 00:48</span></div>
+            <div class="utilities"><div class="zoom-control" role="group" aria-label="Camera zoom" data-i18n-aria-label="zoom.label" data-mode="auto"><button id="zoom-auto" type="button" aria-pressed="true" title="Follow the flight camera" data-i18n-title="zoom.autoTitle" disabled data-i18n="zoom.auto">AUTO</button><input id="zoom" type="range" min="1" max="5" step="0.01" value="1" aria-label="Camera zoom" data-i18n-aria-label="zoom.label" disabled /><output id="zoom-value" for="zoom">1.00×</output></div><button class="icon-button" id="sound" aria-label="Mute sound" data-i18n-aria-label="control.soundOff" title="Mute sound" data-i18n-title="control.soundOff" aria-pressed="true" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m9 4-4 4H2v4h3l4 4V4Z"/><path class="sound-muted" d="m13 8 5 5m0-5-5 5"/><path class="sound-waves" d="M12 7a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/></svg></button><span class="utility-divider"></span><button class="icon-button" id="fullscreen" aria-label="View fullscreen" data-i18n-aria-label="control.fullscreen" title="View fullscreen" data-i18n-title="control.fullscreen"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4" /></svg></button></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <div class="bottom-signoff"><span>PagodaX © 2026</span><span data-i18n="footer.origin">IMAGINED IN CHANG’AN</span><span data-i18n="footer.credit">REAL PHOTOGRAPHY. UNRESTRAINED IMAGINATION.</span></div>
+
+    <dialog id="atmosphere-dialog" aria-labelledby="atmosphere-title">
+      <div class="dialog-heading"><div><p class="eyebrow" data-i18n="archive.eyebrow">ATMOSPHERIC STUDY / 001</p><h2 id="atmosphere-title" data-i18n="archive.title">One viewpoint. Different skies.</h2></div><button class="icon-button close-dialog" aria-label="Close weather archive" data-i18n-aria-label="archive.close">✕</button></div>
+      <p class="study-intro" data-i18n="archive.intro">Weather imagery of the Giant Wild Goose Pagoda. Drag the divider to compare visibility near and far.</p>
+      <div class="comparison" id="comparison"><img draggable="false" src="/assets/xian-clear.webp" alt="Photograph of the Giant Wild Goose Pagoda in clear weather" data-i18n-alt="archive.clearAlt" loading="lazy" /><div class="comparison-haze" id="comparison-haze"><img draggable="false" src="/assets/xian-haze.webp" alt="The pagoda disappears in heavy haze while the foreground remains visible" data-i18n-alt="archive.hazeAlt" loading="lazy" /></div><span class="compare-label clear-label" data-i18n="archive.clear">CLEAR PHOTOGRAPH</span><span class="compare-label haze-label" data-i18n="archive.haze">HAZE STUDY</span><div class="compare-line" id="compare-line"><span>↔</span></div><input type="range" min="0" max="100" value="50" aria-label="Clear and hazy image comparison divider" data-i18n-aria-label="archive.slider" id="compare-range" /></div>
+    </dialog>
+    <noscript><p class="noscript" data-i18n="page.noscript">Enable JavaScript to watch the launch and open the weather archive.</p></noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
