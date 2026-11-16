@@ -18,7 +18,7 @@ A cinematic, interactive launch experience set in Xi’an. Real photography of t
 - **Live instruments.** Switch between flight profile, propellant remaining, engine status, and a moving orbital forecast with a sliding transition.
 - **Changing skies.** Haze gives way to clear air; the weather archive compares registered photographs with a draggable divider.
 - **English and Simplified Chinese.** Switch in the header without restarting the flight. Language and mute preferences stay on your device.
-- **A measured loading screen.** The opening screen follows four completed image loads and the first rendered scene, then fades into the launch console.
+- **A measured loading screen.** The opening screen follows four completed image loads and the first rendered scene. It stays visible for at least 1.5 seconds, then fades into the console over 600 ms once everything is ready. Reduced-motion preferences skip the fade.
 
 The desktop console fits available viewport height while preserving the camera’s 1.95:1 aspect ratio. Smaller screens retain natural scrolling and a separate tracking view. Sound begins with the first launch gesture and can be muted.
 

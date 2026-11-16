@@ -3,8 +3,8 @@
 body { margin: 0; }
 body[data-loading=true] { overflow: hidden; }
 body[data-loading=true]>:not(.preloader):not(script):not(noscript) { visibility: hidden; }
-.preloader { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: #101112; opacity: 1; transition: opacity 400ms ease; }
-.preloader[aria-hidden=true] { opacity: 0; pointer-events: none; }
+.preloader { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: #101112; opacity: 1; transition: opacity 600ms cubic-bezier(.22,1,.36,1); }
+.preloader[aria-hidden=true] { opacity: 0; }
 .preloader[hidden] { display: none; }
 .preloader-content { width: min(300px,76vw); }
 .preloader-code { display: block; margin-bottom: 28px; color: #8e9295; font: 9px monospace; letter-spacing: 2px; }

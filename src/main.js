@@ -17,6 +17,9 @@ const stage = $('stage');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const message = $('stage-message');
 const progress = $('progress');
+const loadingShownAt = new Promise(resolve => requestAnimationFrame(() => resolve(performance.now())));
+const loadingSurfaces = [...document.querySelectorAll('.site-header, main, .bottom-signoff')];
+loadingSurfaces.forEach(element => { element.inert = true; });
 let flight, available = false, raf = 0, previous = 0, wasPlaying = false;
 let launched = false, launchLatched = false, fallbackReason, soundUnavailable = false, fullscreenUnavailable = false;
 applyTranslations();
@@ -397,16 +400,24 @@ try {
   for (const el of [$('play'), $('sound'), $('zoom'), $('zoom-auto'), progress, ...document.querySelectorAll('.phase-ticks button')]) el.disabled = false;
   applyTranslations();
   updateUtilityLabels();
-  stage.dataset.ready = 'true';
   message.hidden = true;
   update(sampleFlight(0));
   loadingProgress(5);
 } catch (error) { staticFallback(error.message); }
 finally {
+  const shownAt = await loadingShownAt;
+  // The minimum runs alongside downloads, never after them. Let the final
+  // progress update settle before starting the handoff on a slower connection.
+  const progressSettle = available && !reducedMotion.matches ? 240 : 0;
+  await new Promise(resolve => setTimeout(resolve, Math.max(0, 1500 - (performance.now() - shownAt), progressSettle)));
   document.body.dataset.loading = 'false';
   $('preloader').setAttribute('aria-hidden', 'true');
   $('preloader').inert = true;
-  setTimeout(() => { $('preloader').hidden = true; }, 400);
+  const fadeDuration = parseFloat(getComputedStyle($('preloader')).transitionDuration) * 1000;
+  if (fadeDuration > 0) await new Promise(resolve => setTimeout(resolve, fadeDuration));
+  $('preloader').hidden = true;
+  loadingSurfaces.forEach(element => { element.inert = false; });
+  if (available) stage.dataset.ready = 'true';
 }
 
 // 仅显式检查链接提供只读统计和确定性帧控制，不出现在普通用户界面。
